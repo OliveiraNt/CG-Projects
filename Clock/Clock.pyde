@@ -1,10 +1,10 @@
 secondRadius, minuteRadius, hoursRadius, clockDiameter = 0.0, 0.0, 0.0, 0.0
 cx, cy = 0, 0
-c1 = color(random(255), random(255), random(255))
-c2 = color(random(255), random(255), random(255))
+c1 = color(222, 240, 109)
+c2 = color(206, 19, 19)
 def setup():
     
-    size(640,360)
+    size(640,640)
     stroke(255)
     
     global secondRadius
@@ -23,12 +23,22 @@ def setup():
     cx = width / 2
     cy = height / 2
     
+    font = loadFont("a.vlw")
+    textFont(font, 32)
+    
 def draw():
     background(0)
     
     fill(c1)
     noStroke()
     ellipse(cx, cy, clockDiameter, clockDiameter)
+    
+    fill(0)
+    textAlign(CENTER, CENTER)
+    text("9", cx - secondRadius, cy)
+    text("12", cx, cy - secondRadius)
+    text("3", cx + secondRadius, cy)
+    text("6", cx, cy + secondRadius)
     
     s = map(second(), 0, 60, 0, TWO_PI) - HALF_PI
     m = map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI
