@@ -1,7 +1,8 @@
 secondRadius, minuteRadius, hoursRadius, clockDiameter = 0.0, 0.0, 0.0, 0.0
 cx, cy = 0, 0
-c1 = color(222, 240, 109)
-c2 = color(206, 19, 19)
+c1 = color(random(255), random(255), random(255))
+c2 = color(random(255), random(255), random(255))
+c3 = color(random(255), random(255), random(255))
 def setup():
     
     size(640,640)
@@ -33,7 +34,7 @@ def draw():
     noStroke()
     ellipse(cx, cy, clockDiameter, clockDiameter)
     
-    fill(0)
+    fill(c3)
     textAlign(CENTER, CENTER)
     text("9", cx - secondRadius, cy)
     text("12", cx, cy - secondRadius)
@@ -52,4 +53,15 @@ def draw():
     strokeWeight(4)
     line(cx, cy, cx + cos(h) * hoursRadius, cy + sin(h) * hoursRadius)
     
-    
+    strokeWeight(5)
+    beginShape(POINTS)
+    a = 0
+    while a < 360 :
+        if a not in [0, 90, 180, 270] :
+            angle = radians(a)
+            x = cx + cos(angle) * secondRadius
+            y = cy + sin(angle) * secondRadius
+            vertex(x, y)
+        a += 30
+        
+    endShape()
