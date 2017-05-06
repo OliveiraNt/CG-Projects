@@ -13,6 +13,7 @@ def prism(n, r, l):
 	y, z = 0, 0
 	z2 = l
 
+	#Lados
 	glBegin(GL_QUAD_STRIP)
 
 	for v in range(n+1):
@@ -24,6 +25,7 @@ def prism(n, r, l):
 		teta += (2*pi)/n
 	glEnd()
 
+	#Base 1
 	glBegin(GL_POLYGON)
 
 	teta = 0
@@ -35,6 +37,7 @@ def prism(n, r, l):
 		teta += (2*pi)/n
 	glEnd()
 
+	#Base 2
 	glBegin(GL_POLYGON)
 
 	teta = 0
@@ -45,6 +48,40 @@ def prism(n, r, l):
 		glVertex3f(x2, z2, y2)
 		teta += (2*pi)/n
 	glEnd()
+
+
+	#linhas
+	glBegin(GL_LINE_LOOP)
+
+	teta = 0
+	for v in range(n):
+		glColor3f(0,0,0)
+		x2 = (x * cos(teta) - y * sin(teta))
+		y2 = (x * sin(teta) + y * cos(teta))
+		glVertex3f(x2, z2, y2)
+		teta += (2*pi)/n
+	glEnd()
+
+	glBegin(GL_LINE_LOOP)
+
+	teta = 0
+	for v in range(n):
+		glColor3f(0,0,0)
+		x2 = (x * cos(teta) - y * sin(teta))
+		y2 = (x * sin(teta) + y * cos(teta))
+		glVertex3f(x2, z, y2)
+		teta += (2*pi)/n
+	glEnd()
+
+	for v in range(n):
+		glColor3f(0,0,0)
+		x2 = (x * cos(teta) - y * sin(teta))
+		y2 = (x * sin(teta) + y * cos(teta))
+		glBegin(GL_LINES)
+		glVertex3f(x2, z, y2)
+		glVertex3f(x2, z2, y2)
+		glEnd()
+		teta += (2*pi)/n
 	
 
 def abacaxi():

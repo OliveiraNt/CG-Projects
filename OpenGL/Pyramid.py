@@ -35,6 +35,31 @@ def pyramid(n, r):
 		glVertex3f(x2, z, y2)
 		teta += (2*pi)/n
 	glEnd()
+
+	#Linhas
+	glBegin(GL_LINE_LOOP)
+	teta = 0
+	for v in range(n+1):
+		glColor3f(0,0,0)
+		x2 = (x * cos(teta) - y * sin(teta))
+		y2 = (x * sin(teta) + y * cos(teta))
+		glVertex3f(x2, z, y2)
+		teta += (2*pi)/n
+	glEnd()
+
+	glBegin(GL_LINES)
+
+	glColor3fv(colors[0])
+	glVertex3f(0, r, 0)
+
+	for v in range(n+1):
+		glColor3f(0,0,0)
+		x2 = (x * cos(teta) - y * sin(teta))
+		y2 = (x * sin(teta) + y * cos(teta))
+		glVertex3f(0, r, 0)
+		glVertex3f(x2, z, y2)
+		teta += (2*pi)/n
+	glEnd()
 	
 
 def abacaxi():
