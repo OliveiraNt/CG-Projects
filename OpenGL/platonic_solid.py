@@ -8,12 +8,13 @@ ESCAPE = '\033'
 colors = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5) )
 bl = 1
 
-def tetrahedron(n, r):
+def tetrahedron(r):
+	n = 3
 	teta = 0
 	x = r
 	y, z = 0, 0
-	h = a * sqrt(6) / 3
-	a = sqrt(2*(r**4)*cos(2*pi/n))
+	a = r**2 + r**2 -2 * r * r * cos(2*pi/n)
+	h = sqrt(a) * sqrt(6) / 3
 
 	glBegin(GL_TRIANGLE_FAN)
 
@@ -139,7 +140,7 @@ def cube(n, r):
 def abacaxi():
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 	glRotatef(2,1,3,0)
-	if bl == 1 : tetrahedron(3, 2)
+	if bl == 1 : tetrahedron(2)
 	if bl == 2 : cube(4, 2)
 	glutSwapBuffers()
  
