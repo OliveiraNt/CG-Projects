@@ -6,14 +6,14 @@ import sys
 
 ESCAPE = '\033'
 colors = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5) )
-bl = True
+bl = 1
 
 def tetrahedron(n, r):
 	teta = 0
 	x = r
 	y, z = 0, 0
-	a = 3
 	h = a * sqrt(6) / 3
+	a = sqrt(2*(r**4)*cos(2*pi/n))
 
 	glBegin(GL_TRIANGLE_FAN)
 
@@ -139,8 +139,8 @@ def cube(n, r):
 def abacaxi():
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 	glRotatef(2,1,3,0)
-	if bl : tetrahedron(3, 2)
-	else: cube(4, 2)
+	if bl == 1 : tetrahedron(3, 2)
+	if bl == 2 : cube(4, 2)
 	glutSwapBuffers()
  
 def timer(i):
@@ -148,15 +148,13 @@ def timer(i):
     glutTimerFunc(50,timer,1)
 
 def keyPressed(*args):
-	global n
 	global bl
 
 	if args[0] == ESCAPE:
 		glutLeaveMainLoop()
 	
-	if args[0] == ' ': 
-		if bl : bl = False
-		else : bl = True
+	if args[0] == '1': bl = 1
+	if args[0] == '2': bl = 2
 
 
 # PROGRAMA PRINCIPAL
