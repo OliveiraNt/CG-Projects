@@ -1,4 +1,4 @@
-# Rubic's Cube 
+# Rubik's Cube 
 Projeto Final - Computação Gráfica 
 Aluno Solon Oliveira
 versão: pré-alpha 0.00001
