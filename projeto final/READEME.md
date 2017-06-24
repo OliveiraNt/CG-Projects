@@ -1,1 +1,0 @@
-#Rubic's Cube
